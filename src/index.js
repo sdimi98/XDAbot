@@ -11,7 +11,7 @@ async function main() {
     const client = new Client({
       intents: intents(),
     });
-    eventHandler(client, { classifier, textGenerator });
+    eventHandler(client, { classifier });
 
     client.login(process.env.TOKEN);
   } catch (err) {
