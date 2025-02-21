@@ -1,4 +1,4 @@
-const {ApplicationCommandOptionType} = require("discord.js");
+const { ApplicationCommandOptionType } = require("discord.js");
 module.exports = {
     name: 'dice',
     description: 'Rolls a dice from 1 to the max value is set. Default max value is 6.',
@@ -12,8 +12,8 @@ module.exports = {
     permissionsRequired: [],
     callback: (client, interaction) => {
         let max = 6;
-        if (!interaction.options.get('dice-size') === false){
-            if (interaction.options.get('dice-size').value <= 0){
+        if (!interaction.options.get('dice-size') === false) {
+            if (interaction.options.get('dice-size').value <= 0) {
                 interaction.reply('Please enter a valid number.')
                 return;
             }
