@@ -5,7 +5,7 @@ const messageSet = new Set();
 let messageCounter = 0;
 let previousMessage;
 
-module.exports = async (client, message, classifier, textGenerator) => {
+module.exports = async (client, message, classifier) => {
     if (message.content === previousMessage) return;
     if (message.author.bot) return;
     messageCounter++;
@@ -33,6 +33,7 @@ module.exports = async (client, message, classifier, textGenerator) => {
 
 
             const markovSentence = generateMarkovOutput(messages);
+            message.channel.send(markovSentence)
             console.log("Markov output:", markovSentence);
         }
 
