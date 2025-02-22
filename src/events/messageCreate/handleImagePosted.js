@@ -8,7 +8,7 @@ module.exports = async (client, message, classifier) => {
                     message.reply("You posted anime.")
                 }
                 console.log(result);
-                console.log(animeScore);
+                console.log("Anime score: " + animeScore);
                 break;
             }
         }

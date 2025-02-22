@@ -17,6 +17,7 @@ module.exports = async (client, message, classifier) => {
             const fetchedMessages = await message.channel.messages.fetch({ limit: 100 });
 
             if (messages.length > 1500) {
+                console.log("Refreshing messages collection.")
                 const removedItems = messages.splice(0, 100);
                 for (const item of removedItems) {
                     messageSet.delete(item);
@@ -35,6 +36,7 @@ module.exports = async (client, message, classifier) => {
             const markovSentence = generateMarkovOutput(messages);
             message.channel.send(markovSentence)
             console.log("Markov output:", markovSentence);
+            console.log("Messages size: ", messages.length);
         }
 
     }
