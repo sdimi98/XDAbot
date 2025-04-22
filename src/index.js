@@ -1,8 +1,8 @@
 const { Client } = require('discord.js');
-require('dotenv').config();
-const intents = require('./utils/intents');
+require('dotenv').config({ path: '../config/.env' });
+const intents = require('./utils/helpers/intents');
 const eventHandler = require('./handlers/eventHandler');
-const { loadImageClassifier } = require('./utils/modelLoader');
+const { loadImageClassifier } = require('./utils/helpers/modelLoader');
 
 async function main() {
   try {
@@ -12,7 +12,6 @@ async function main() {
       intents: intents(),
     });
     eventHandler(client, { classifier });
-
     client.login(process.env.TOKEN);
   } catch (err) {
     console.error("Error loading the model or starting the bot:", err);

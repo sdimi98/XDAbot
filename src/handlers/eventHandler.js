@@ -1,5 +1,5 @@
 const path = require('path');
-const getAllFiles = require('../utils/getAllFiles')
+const getAllFiles = require('../utils/helpers/getAllFiles')
 module.exports = (client, { classifier, textGenerator }) => {
     const eventFolders = getAllFiles(path.join(__dirname, '..', 'events'), true);
     for (const eventFolder of eventFolders) {

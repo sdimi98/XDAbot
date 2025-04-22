@@ -1,5 +1,5 @@
-const { MESSAGE_THRESHOLD } = require('../../../config.json')
-const generateMarkovOutput = require('../../utils/generateMarkovOutput');
+const { MESSAGE_THRESHOLD } = require('../../../config/config.json')
+const generateMarkovOutput = require('../../utils/discord/generateMarkovOutput');
 const messages = [];
 const messageSet = new Set();
 let messageCounter = 0;
