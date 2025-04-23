@@ -4,6 +4,9 @@
 ***
 <img src="https://i.imgur.com/tsEMTW2.png" width="450" />
 
+***
+<img src="https://i.imgur.com/UT4gpKU.png" width="600" />
+
 ## Features
 - **Image Classification:**\
 On image upload, bot analyzes if it’s anime-style. If flagged, it can notify or handle accordingly (for example, by removing or logging it).
@@ -17,6 +20,9 @@ Generates replies that imitate the style of users’ past messages.
 - **/dice Command:**\
 A basic dice roll slash command if you ever need a quick dice roll.\
 Example usage: /dice → Bot returns something like Rolled a 5.
+
+- **/tldr Command:**\
+A command that summarizes text, based on text summarization model facebook/bart-large-cnn.\
 
 ## Requirements
 - Node.js 22.12.0 or newer.
