@@ -22,7 +22,10 @@ A basic dice roll slash command if you ever need a quick dice roll.\
 Example usage: /dice → Bot returns something like Rolled a 5.
 
 - **/tldr Command:**\
-A command that summarizes text, based on text summarization model facebook/bart-large-cnn.\
+A command that summarizes text, based on text summarization model facebook/bart-large-cnn.
+
+- **/summarize Command:**\
+A command that summarizes a discord conversation for those who do not have the time to read through the chat.
 
 ## Requirements
 - Node.js 22.12.0 or newer.

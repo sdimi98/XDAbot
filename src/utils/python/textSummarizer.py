@@ -16,8 +16,8 @@ def safe_summarize(document):
 
     result = summarizer(
         document,
-        max_length=120,
-        min_length=30,
+        max_length=55,
+        min_length=18,
         truncation=True,
         do_sample=False,
     )
