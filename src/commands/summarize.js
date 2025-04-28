@@ -22,7 +22,7 @@ module.exports = {
                 interaction.editReply('Please enter a valid number between 1 and 200.')
                 return;
             }
-            summarizeAmount = receivedAmount;
+            summarizeAmount = receivedAmount + 1;
         }
         console.log("Fetching ", summarizeAmount, "messages.")
 
@@ -35,9 +35,9 @@ module.exports = {
             if (lastMessageId) {
                 options.before = lastMessageId;
             }
-        
+
             const messages = await interaction.channel.messages.fetch(options);
-    
+
             if (messages.size === 0) break;
 
             fetchedMessages.push(...messages.values());
@@ -53,6 +53,11 @@ module.exports = {
             )
             .map(m => `${m.author.displayName}: ${m.content.trim()}`)
             .toReversed();
+
+        if (messagesArray.length === 0) {
+            await interaction.editReply("No messages sent to summarizer.");
+            return;
+        }
 
         console.log("Sending ", messagesArray.length, " messages to python child.")
         const summary = await runModel(messagesArray, 'messagesSummarizer.py');
