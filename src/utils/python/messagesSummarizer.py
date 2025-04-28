@@ -10,8 +10,8 @@ def safe_summarize(messages):
         document = document[:MAX_CHAR_LEN]
     return summarizer(
         document,
-        max_length=60,
-        min_length=10,
+        max_length=50,
+        min_length=20,
         truncation=True,
         do_sample=False,
     )[0]["summary_text"]
