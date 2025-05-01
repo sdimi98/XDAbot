@@ -51,7 +51,7 @@ module.exports = {
                 typeof m.content === "string" &&
                 m.content.trim().length
             )
-            .map(m => `${m.author.displayName}: ${m.content.trim()}`)
+            .map(m => `${m.member?.displayName || m.author.username}: ${m.content.trim()}`)
             .toReversed();
 
         if (messagesArray.length === 0) {

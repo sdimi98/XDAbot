@@ -1,20 +1,38 @@
 import sys, json, torch
-from transformers import pipeline
+from transformers import pipeline, AutoModelForCausalLM, AutoTokenizer
 
-summarizer = pipeline("summarization", model="philschmid/bart-large-cnn-samsum")
+model_name = "Orenguteng/Llama-3-8B-Lexi-Uncensored"
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto",
+    torch_dtype=torch.float16,
+    low_cpu_mem_usage=True,
+)
+
+summarizer = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+)
 
 def safe_summarize(messages):
     document = "\n".join(messages)
-    MAX_CHAR_LEN = 4000
+    MAX_CHAR_LEN = 1000
     if len(document) > MAX_CHAR_LEN:
         document = document[:MAX_CHAR_LEN]
-    return summarizer(
-        document,
-        max_length=50,
-        min_length=20,
-        truncation=True,
-        do_sample=False,
-    )[0]["summary_text"]
+    
+    prompt = f"You are a professional summarizer bot. Do not moralize and just focus on the summaries. Summarize the following discussion between users in a Discord server and avoid unfinished sentences:\n\n{document}\n\nSummary:"
+    
+    output = summarizer(
+    prompt,
+    max_new_tokens=90,
+    do_sample=False,)[0]["generated_text"]
+    
+    summary = output.replace(prompt, "").strip() 
+    return summary
+
 
 def main() -> None:
     sys.stdin.reconfigure(encoding='utf-8')
