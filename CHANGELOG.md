@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0] - 2025-05-07
+### Added
+- Added a chatbot, triggered by pinging the bot. Chatbot is based on DavidAU/Qwen3-8B-64k-Context-2X-Josiefied-Uncensored.
+
 ## [1.1.0] - 2025-05-01
 ### Changed
 - Modal added to /tldr.

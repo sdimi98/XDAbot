@@ -1,5 +1,6 @@
 const { MESSAGE_THRESHOLD } = require('../../../config/config.json')
 const generateMarkovOutput = require('../../utils/discord/generateMarkovOutput');
+const handleBotMentioned = require('../../utils/discord/handleBotMentioned');
 const messages = [];
 const messageSet = new Set();
 let messageCounter = 0;
@@ -7,6 +8,7 @@ let previousMessage;
 
 module.exports = async (client, message, classifier) => {
     if (message.content === previousMessage) return;
+    handleBotMentioned(message);
     if (message.author.bot) return;
     messageCounter++;
     previousMessage = message.content;

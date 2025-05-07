@@ -7,7 +7,7 @@ module.exports = {
     options: [
         {
             name: 'messages-size',
-            description: 'The maximum amont of messages to be summarized.',
+            description: 'The maximum amount of messages to be summarized.',
             type: ApplicationCommandOptionType.Number,
         }
     ],

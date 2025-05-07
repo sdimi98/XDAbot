@@ -17,6 +17,9 @@ Fetches a certain number of recent messages from a channel.
 Builds a Markov chain from these messages.
 Generates replies that imitate the style of users’ past messages.
 
+- **Qwen3-based Chatbot:**\
+A chatbot that responds with an AI-generated message once pinged at the begining of a post.
+
 - **/dice Command:**\
 A basic dice roll slash command if you ever need a quick dice roll.\
 Example usage: /dice → Bot returns something like Rolled a 5.

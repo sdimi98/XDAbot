@@ -3,7 +3,7 @@ const runModel = require('../utils/python/pythonBridge.js');
 
 module.exports = {
     name: 'tldr',
-    description: 'Summarizes a single message',
+    description: 'Summarizes a paragraph of text.',
     options:[],
     permissionsRequired: [],
     callback: async (client, interaction) => {
