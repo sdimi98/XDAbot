@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.3.0] - 2025-05-07
+## [1.3.0] - 2025-05-12
 ### Added
 - Purge command that clears the last X number of messages the bot has posted.
 - Blacklist that will prevent specific users from accessing the bot.
