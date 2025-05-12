@@ -1,5 +1,5 @@
 const getLocalCommands = require('../utils/helpers/getLocalCommands')
-module.exports = async (client, interaction) => {
+module.exports = async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
     const localCommands = getLocalCommands();
     try {
@@ -7,7 +7,7 @@ module.exports = async (client, interaction) => {
             (cmd) => cmd.name === interaction.commandName
         );
         if (!commandObject) return;
-        await commandObject.callback(client, interaction);
+        await commandObject.callback(interaction);
     }
     catch (error) {
         console.log(`There was an error running this command: ${error}`)

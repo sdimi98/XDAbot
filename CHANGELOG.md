@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0] - 2025-05-07
+### Added
+- Purge command that clears the last X number of messages the bot has posted.
+- Blacklist that will prevent specific users from accessing the bot.
+
+### Fixed
+- Client will not be passed down the chain, as that was redundant. 
+- Qwen3 response will now be split into chunks anod not be cut off by Discord's API limits.
+
 ## [1.2.0] - 2025-05-07
 ### Added
 - Added a chatbot, triggered by pinging the bot. Chatbot is based on DavidAU/Qwen3-8B-64k-Context-2X-Josiefied-Uncensored.

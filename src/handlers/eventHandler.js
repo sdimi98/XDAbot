@@ -8,8 +8,8 @@ module.exports = (client, { classifier, textGenerator }) => {
         client.on(eventName, async (arg) => {
             for (const eventFile of eventFiles) {
                 const eventFunction = require(eventFile);
-                await eventFunction(client, arg, classifier, textGenerator);
+                await eventFunction(arg, classifier, textGenerator);
             }
         })
-    }
+    } 
 };

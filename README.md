@@ -18,7 +18,7 @@ Builds a Markov chain from these messages.
 Generates replies that imitate the style of users’ past messages.
 
 - **Qwen3-based Chatbot:**\
-A chatbot that responds with an AI-generated message once pinged at the begining of a post.
+A chatbot that responds with an AI-generated message once pinged at the beginning of a post.
 
 - **/dice Command:**\
 A basic dice roll slash command if you ever need a quick dice roll.\

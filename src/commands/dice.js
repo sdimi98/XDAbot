@@ -10,7 +10,7 @@ module.exports = {
         }
     ],
     permissionsRequired: [],
-    callback: (client, interaction) => {
+    callback: (interaction) => {
         let max = 6;
         if (!interaction.options.get('dice-size') === false) {
             if (interaction.options.get('dice-size').value <= 0) {

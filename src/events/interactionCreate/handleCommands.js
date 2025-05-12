@@ -1,8 +1,14 @@
 const getLocalCommands = require('../../utils/helpers/getLocalCommands');
+const { MessageFlags } = require("discord.js");
+const { blacklist } = require('../../../config/config.json')
 
-module.exports = async (client, interaction) => {
+
+module.exports = async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
-
+    if (blacklist.includes(interaction.member.id)) {
+        interaction.reply({ content: "You are not authorized to use this command.", flags: MessageFlags.Ephemeral });
+        return;
+    }
     const localCommands = getLocalCommands();
 
     try {
@@ -26,7 +32,7 @@ module.exports = async (client, interaction) => {
         }
 
 
-        await commandObject.callback(client, interaction);
+        await commandObject.callback(interaction);
     } catch (error) {
         console.log(`There was an error running this command: ${error}`);
     }

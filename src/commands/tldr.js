@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
+const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
 const runModel = require('../utils/python/pythonBridge.js');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
     description: 'Summarizes a paragraph of text.',
     options:[],
     permissionsRequired: [],
-    callback: async (client, interaction) => {
+    callback: async (interaction) => {
 
         const modal = new ModalBuilder({
             customId: `modal-${interaction.user.id}`,

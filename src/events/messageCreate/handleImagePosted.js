@@ -1,4 +1,4 @@
-module.exports = async (client, message, classifier) => {
+module.exports = async ( message, classifier) => {
     if (message.attachments.size > 0) {
         for (const attachment of message.attachments.values()) {
             if (attachment.contentType?.startsWith('image/')) {

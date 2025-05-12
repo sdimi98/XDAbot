@@ -1,5 +1,6 @@
 {
-    "MESSAGE_THRESHOLD": 6,
-    "server": ""
-  }
-  
+  "MESSAGE_THRESHOLD": 6,
+  "server": "",
+  "blacklist": [],
+  "devs":[]
+}

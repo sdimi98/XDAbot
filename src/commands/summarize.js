@@ -12,7 +12,7 @@ module.exports = {
         }
     ],
     permissionsRequired: [],
-    callback: async (client, interaction) => {
+    callback: async (interaction) => {
         console.log("Summarization invoked.")
         await interaction.deferReply();
         let summarizeAmount = 100;
