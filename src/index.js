@@ -7,11 +7,12 @@ const { loadImageClassifier } = require('./utils/helpers/modelLoader');
 async function main() {
   try {
     const classifier = await loadImageClassifier();
+    const messages = [];
     console.log("Image classifier model loaded successfully!");
     const client = new Client({
       intents: intents(),
     });
-    eventHandler(client, { classifier });
+    eventHandler(client, classifier, messages );
     client.login(process.env.TOKEN);
   } catch (err) {
     console.error("Error loading the model or starting the bot:", err);

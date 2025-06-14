@@ -1,7 +1,7 @@
 {
   "name": "xdabot",
   "version": "1.0.2",
-  "description": "",
+  "description": "<img src=\"https://i.imgur.com/sNO7aOS.png\" width=\"300\" />",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,5 +17,14 @@
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.5",
     "markov-strings": "^3.0.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdimi98/XDAbot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sdimi98/XDAbot/issues"
+  },
+  "homepage": "https://github.com/sdimi98/XDAbot#readme"
 }

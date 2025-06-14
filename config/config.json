@@ -1,6 +1,7 @@
 {
-  "MESSAGE_THRESHOLD": 6,
+  "messageThreshold": 6,
   "server": "",
   "blacklist": [],
-  "devs":[]
+  "devs":[],
+  "markovChannels":[]
 }

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0] - 2025-06-11
+### Added
+- For each specified markov channel, the bot fetches and loads the last 46000 messages on bot startup. 
+- Increased markov state size to 2 and minimum output length to at least 3 words/tokens. 
+
+## Removed
+- Cutting down the markov corpus when it becomes too big. 
+
 ## [1.3.0] - 2025-05-12
 ### Added
 - Purge command that clears the last X number of messages the bot has posted.
