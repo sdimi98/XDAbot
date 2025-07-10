@@ -20,6 +20,9 @@ Generates replies that imitate the style of users’ past messages.
 - **Qwen3-based Chatbot:**\
 A chatbot that responds with an AI-generated message once pinged at the beginning of a post.
 
+- **Birthday wish generator :**\
+On a member's birthday, the bot generates with the assistance of AI a creative birthday wish and posts it in the main channel.
+
 - **/dice Command:**\
 A basic dice roll slash command if you ever need a quick dice roll.\
 Example usage: /dice → Bot returns something like Rolled a 5.

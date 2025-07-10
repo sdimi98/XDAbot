@@ -1,0 +1,7 @@
+CREATE TABLE birthdays (id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE, 
+  user_id TEXT NOT NULL UNIQUE,
+  date DATE NOT NULL
+  );
+
+

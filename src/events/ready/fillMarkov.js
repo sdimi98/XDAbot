@@ -6,7 +6,7 @@ module.exports = (client, classifier, messages) => {
         const channel = await client.channels.fetch(channelId).catch(() => null);
 
         let lastMessageId = null;
-        let remainingMessages = 46000;
+        let remainingMessages = 86000;
         while (remainingMessages > 0) {
             const fetchLimit = Math.min(100, remainingMessages);
             const options = { limit: fetchLimit };

@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.0] - 2025-07-10
+### Added
+- Birthday features that queries an AI to create a wish for a user and deliver it in the main channel of the guild.
+
 ## [1.4.0] - 2025-06-11
 ### Added
 - For each specified markov channel, the bot fetches and loads the last 46000 messages on bot startup. 
