@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.6.0] - 2025-07-13
+### Changed
+- Markov corpus is now filled via database and new messages get written to that database. 
+
 ## [1.5.0] - 2025-07-10
 ### Added
 - Birthday features that queries an AI to create a wish for a user and deliver it in the main channel of the guild.

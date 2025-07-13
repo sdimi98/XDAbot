@@ -1,1 +1,0 @@
-ALTER TABLE birthdays ADD COLUMN guild_id TEXT NOT NULL DEFAULT '';

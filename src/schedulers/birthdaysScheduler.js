@@ -1,5 +1,5 @@
 const schedule = require('node-schedule');
-const { getTodayBirthdays } = require('../repository/birthdays/birthdaysRepository')
+const { getTodayBirthdaysFromDb } = require('../services/birthdaysService')
 const tryGetMainTextChannel = require('../utils/helpers/tryGetMainTextChannel');
 const runModel = require('../utils/python/pythonBridge');
 
@@ -14,8 +14,8 @@ module.exports = (client) => {
   console.log("Birthday scheduler initiated.")
 
 
-  schedule.scheduleJob('0 26 14 * * *', async function () {
-    const birthdaysToday = getTodayBirthdays()
+  schedule.scheduleJob('0 24 04 * * *', async function () {
+    const birthdaysToday = getTodayBirthdaysFromDb()
     for (const birthday of birthdaysToday) {
       const guild = await client.guilds.fetch(birthday.guild_id);
       const channel = tryGetMainTextChannel(guild);

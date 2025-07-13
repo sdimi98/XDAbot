@@ -10,7 +10,7 @@ async function main() {
     const messages = [];
     console.log("Image classifier model loaded successfully!");
     const client = new Client({
-      intents: intents(),
+      intents: intents()
     });
     eventHandler(client, classifier, messages );
     client.login(process.env.TOKEN);

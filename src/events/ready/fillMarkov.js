@@ -1,12 +1,28 @@
 const { markovChannels } = require('../../../config/config.json')
+const { getAllMessagesContentFromDb, saveMessageSafely } = require('../../services/messagesService')
+const combineMessages = require('../../utils/helpers/combineMessages')
 
-module.exports = (client, classifier, messages) => {
-    console.log("Initiating Markov corpus.")
-    markovChannels.forEach(async channelId => {
+
+module.exports = async (client, classifier, messages) => {
+    console.log("Initiating Markov corpus.");
+
+    const persistentMessagesContent = getAllMessagesContentFromDb();
+
+    if (persistentMessagesContent.length > 0) {
+        messages.push(...combineMessages(persistentMessagesContent));
+        console.log("Markov loaded from DB with %i messages", messages.length);
+        return;
+    }
+
+    console.log("No messages found in DB. Fetching from Discord...");
+
+    for (const channelId of markovChannels) {
         const channel = await client.channels.fetch(channelId).catch(() => null);
+        if (!channel) continue;
 
         let lastMessageId = null;
         let remainingMessages = 86000;
+
         while (remainingMessages > 0) {
             const fetchLimit = Math.min(100, remainingMessages);
             const options = { limit: fetchLimit };
@@ -15,33 +31,33 @@ module.exports = (client, classifier, messages) => {
             }
 
             const fetchedBatch = await channel.messages.fetch(options);
+            if (fetchedBatch.size === 0) break;
 
-            const rawLines = fetchedBatch
-                .filter(m => m.content && m.content.split(' ').length > 0)
-                .map(m => m.content.trim());
+            const rawMessages = fetchedBatch.filter(
+                m =>
+                    m.content &&
+                    m.content.trim().length > 0 &&
+                    m.author &&
+                    m.guild
+            );
 
-            const combinedLines = [];
-            try{
-            for (let i = 0; i < rawLines.length; i++) {
-                const words = rawLines[i].split(' ');
-                if (words.length === 2 && i + 1 < rawLines.length) {
-                    const combined = rawLines[i] + ' ' + rawLines[i + 1];
-                    combinedLines.push(combined);
-                    i++;
-                } else {
-                    combinedLines.push(rawLines[i]);
+            const rawLines = rawMessages.map(m => m.content.trim());
+
+            for (const m of rawMessages.values()) {
+                try {
+                    saveMessageSafely(m);
+                } catch (err) {
+                    console.log('Failed to save message:', err.message);
+                    continue;
+
                 }
             }
 
-            messages.push(...combinedLines);
+            messages.push(...combineMessages(rawLines));
             lastMessageId = fetchedBatch.last().id;
-            remainingMessages -= fetchedBatch.size;}
-            catch (error){
-                console.log(`There was an error filling Markov corpus: ${error}`)
-                break;
-            }
+            remainingMessages -= fetchedBatch.size;
         }
-        console.log("Markov has been filled with %i messages", messages.length)
-    });
+    }
 
+    console.log("Markov has been filled with %i messages", messages.length);
 };
