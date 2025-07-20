@@ -1,4 +1,4 @@
-const { saveMessage, getAllMessagesContent } = require('../repository/messagesRepository')
+const { saveMessage, getAllMessagesContent, getAIDialogue } = require('../repository/messagesRepository')
 const { saveGuildToDb } = require('./guildService')
 const { saveUserToDb } = require('./userService')
 
@@ -12,4 +12,11 @@ function getAllMessagesContentFromDb() {
     return getAllMessagesContent();
 }
 
-module.exports = { saveMessageSafely, getAllMessagesContentFromDb };
+function getAIConversationHistory(message){
+
+   return getAIDialogue(message.channelId, message.client.user.id);
+
+}
+
+
+module.exports = { saveMessageSafely, getAllMessagesContentFromDb, getAIConversationHistory };

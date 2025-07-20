@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.0] - 2025-07-20
+### Added
+- Conversation memory added to Qwen3. 
+
 ## [1.6.0] - 2025-07-13
 ### Changed
 - Markov corpus is now filled via database and new messages get written to that database. 

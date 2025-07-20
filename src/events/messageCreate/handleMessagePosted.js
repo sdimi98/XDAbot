@@ -9,9 +9,8 @@ let previousMessage;
 module.exports = async (message, classifier, messages) => {
     if (message.content === previousMessage) return;
     handleBotMentioned(message);
-    if (markovChannels.length !== 0 && !markovChannels.includes(message.channel.id)) return;
-    if (message.author.bot) return;
     saveMessageSafely(message);
+    if (markovChannels.length !== 0 && !markovChannels.includes(message.channel.id)) return;
     messageCounter++;
     previousMessage = message.content;
     if (messageCounter === messageThreshold) {
